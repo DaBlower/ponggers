@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity.y = direction * speed
 	
-	move_and_collide(Vector2(0, velocity.y * delta))
+	move_and_slide()
 	
 	# stop the paddle from going offscreen
 	var viewport_size = get_viewport_rect().size
