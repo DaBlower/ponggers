@@ -20,8 +20,10 @@ func _physics_process(delta: float) -> void:
 		out_of_bounds.emit()
 		start()
 	
-	if position.y < 0 or position.y > get_viewport_rect().size.y:
-		start()
+	if position.y < 0 and velocity.y < 0:
+		velocity = velocity.bounce(Vector2(0,1)) 
+	elif position.y > get_viewport_rect().size.y and velocity.y > 0:
+		velocity = velocity.bounce(Vector2(0,-1))
 		
 	var collision = move_and_collide(velocity * delta)
 	
