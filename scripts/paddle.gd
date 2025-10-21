@@ -21,7 +21,12 @@ func _physics_process(delta: float) -> void:
 
 	velocity.y = direction * speed
 	
+	var prev_x = position.x
+	
 	move_and_slide()
+	
+	# just so the ball doesn't push the paddle lol
+	position.x = prev_x
 	
 	# stop the paddle from going offscreen
 	var viewport_size = get_viewport_rect().size
